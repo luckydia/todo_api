@@ -17,6 +17,10 @@ route_prefix = f"/{url_prefix}/{version}"
 
 
 def create_app():
+    """ Создание экземпляра приложения Flask
+
+    :return: (object) Объект класса Flask
+    """
     app = Flask(__name__)
     cors = CORS(app, resources={f"{route_prefix}/*": {"origins": "*"}})
     app.config.from_object(devconf)
@@ -24,6 +28,12 @@ def create_app():
 
 
 def get_response_msg(data, status_code):
+    """ Создание JSON ответов сервера
+
+    :param data: (list of tuples) Данные полученные SQL запросом
+    :param status_code: (int) HTTP Статус
+    :return: (object) Объект класса Response
+    """
     message = {
         'status': status_code,
         'data': data if data else 'No records found'
@@ -45,6 +55,11 @@ users = {
 
 
 def sql_query(query):
+    """ Выполнение SQL запроса на выборку записей
+
+    :param query: (str) SQL запрос
+    :return: (object) Объект класса Response
+    """
     try:
         records = db.run_query(query=query)
         response = get_response_msg(records, HTTPStatus.OK)
@@ -57,6 +72,11 @@ def sql_query(query):
 
 
 def update(query):
+    """ Выполнение SQL запроса на изменение записей
+
+    :param query: (str) SQL запрос
+    :return: (object) Объект класса Response
+    """
     try:
         db.run_query(query=query)
         response = get_response_msg('Updated successfully', HTTPStatus.OK)
@@ -71,6 +91,12 @@ def update(query):
 ## ==============================================[ Routes - Start ]
 @auth.verify_password
 def verify_password(username, password):
+    """ Верификация пользователя API сервера
+
+    :param username: (str) Логин пользователя
+    :param password: (str) Пароль пользователя
+    :return: (str) Логин пользователя
+    """
     if username in users and check_password_hash(users.get(username), password):
         return username
 
@@ -80,6 +106,11 @@ def verify_password(username, password):
 @app.route(f"{route_prefix}/get_user", methods=['GET'])
 @auth.login_required
 def get_user():
+    """ GET API запрос на получение данных пользователя по email
+    \nПример: /api/v1/get_user?email=example@mail.com
+
+    :return: (object) Объект класса Response
+    """
     email = request.args.get('email', default='NULL', type=str)
     query = f"select * from Users where email ='{email}'"
     return sql_query(query)
@@ -89,6 +120,11 @@ def get_user():
 @app.route(f"{route_prefix}/get_user_bio", methods=['GET'])
 @auth.login_required
 def get_user_bio():
+    """ GET API запрос на получение данных пользователя по id
+    \nПример: /api/v1/get_user_bio?user_id=1
+
+    :return: (object) Объект класса Response
+    """
     userid = request.args.get('user_id', default='NULL', type=int)
     query = f"select * from Users where user_id ='{userid}'"
     return sql_query(query)
@@ -98,6 +134,11 @@ def get_user_bio():
 @app.route(f"{route_prefix}/get_settings", methods=['GET'])
 @auth.login_required
 def get_user_settings():
+    """ GET API запрос на получение выбранных параметров пользователем по его id
+    \nПример: /api/v1/get_settings?user_id=2
+
+    :return: (object) Объект класса Response
+    """
     userid = request.args.get('user_id', default='NULL', type=int)
     query = f"select * from Settings where user_id ='{userid}'"
     return sql_query(query)
@@ -107,6 +148,11 @@ def get_user_settings():
 @app.route(f"{route_prefix}/get_sessions", methods=['GET'])
 @auth.login_required
 def get_user_sessions():
+    """ GET API запрос на получение информации о сессиях пользователя по его id
+    \nПример: /api/v1/get_sessions?user_id=1
+
+    :return: (object) Объект класса Response
+    """
     userid = request.args.get('user_id', default='NULL', type=int)
     query = f"select * from Sessions where user_id ='{userid}'"
     return sql_query(query)
@@ -116,6 +162,11 @@ def get_user_sessions():
 @app.route(f"{route_prefix}/get_last_session", methods=['GET'])
 @auth.login_required
 def get_user_last_session():
+    """ GET API запрос на получение информации о последней сессии пользователя по его id
+    \nПример: /api/v1/get_last_session?user_id=1
+
+    :return: (object) Объект класса Response
+    """
     userid = request.args.get('user_id', default='NULL', type=int)
     query = f"select * from Sessions where user_id ='{userid}'order by last_log desc limit 1"
     return sql_query(query)
@@ -125,6 +176,11 @@ def get_user_last_session():
 @app.route(f"{route_prefix}/get_tasks", methods=['GET'])
 @auth.login_required
 def get_user_tasks():
+    """ GET API запрос на получение информации о имеющихся задачах пользователя по его id
+    \nПример: /api/v1/get_tasks?user_id=1
+
+    :return: (object) Объект класса Response
+    """
     userid = request.args.get('user_id', default='NULL', type=int)
     query = f"select * from Tasks where user_id ='{userid}'"
     return sql_query(query)
@@ -134,6 +190,11 @@ def get_user_tasks():
 @app.route(f"{route_prefix}/get_categories", methods=['GET'])
 @auth.login_required
 def get_user_categories():
+    """ GET API запрос на получение информации о существующих категориях пользователя по его id
+    \nПример: /api/v1/get_categories?user_id=1
+
+    :return: (object) Объект класса Response
+    """
     userid = request.args.get('user_id', default='NULL', type=int)
     query = f"select * from Categories where user_id ='{userid}'"
     return sql_query(query)
@@ -143,6 +204,11 @@ def get_user_categories():
 @app.route(f"{route_prefix}/get_tags", methods=['GET'])
 @auth.login_required
 def get_tags():
+    """ GET API запрос на получение имеющихся тегов
+    \nПример: /api/v1/get_tags
+
+    :return: (object) Объект класса Response
+    """
     query = f"select * from Tags"
     return sql_query(query)
 
@@ -152,6 +218,11 @@ def get_tags():
 @app.route(f"{route_prefix}/add_user", methods=['POST'])
 @auth.login_required
 def insert_user():
+    """ POST API запрос на добавление пользователя
+    \nПример: /api/v1/add_user
+
+    :return: (object) Объект класса Response
+    """
     data = request.json
     email = data['email']
     passw = data['password']
@@ -168,6 +239,11 @@ def insert_user():
 @app.route(f"{route_prefix}/add_task", methods=['POST'])
 @auth.login_required
 def add_task():
+    """ POST API запрос на добавление новой задачи пользователю по его id
+    \nПример: /api/v1/add_task?user_id=1
+
+    :return: (object) Объект класса Response
+    """
     data = request.json
     userid = request.args.get('user_id', default='NULL', type=int)
     task_name = data['task_name']
@@ -188,6 +264,11 @@ def add_task():
 @app.route(f"{route_prefix}/add_category", methods=['POST'])
 @auth.login_required
 def add_category():
+    """ POST API запрос на добавление новой категории пользователю по его id
+    \nПример: /api/v1/add_category?user_id=1
+
+    :return: (object) Объект класса Response
+    """
     data = request.json
     userid = request.args.get('user_id', default='NULL', type=int)
     category = data['category']
@@ -205,6 +286,11 @@ def add_category():
 @app.route(f"{route_prefix}/set_settings", methods=['POST'])
 @auth.login_required
 def set_settings():
+    """ POST API запрос на сохранение настроек пользователя по его id
+    \nПример: /api/v1/set_settings?user_id=1
+
+    :return: (object) Объект класса Response
+    """
     data = request.json
     userid = request.args.get('user_id', default='NULL', type=int)
     first_day_week = data['first_day_week']
@@ -220,6 +306,11 @@ def set_settings():
 @app.route(f"{route_prefix}/add_session", methods=['POST'])
 @auth.login_required
 def add_session():
+    """ POST API запрос на сохранение новой сессии пользователя по его id
+    \nПример: /api/v1/add_session?user_id=1
+
+    :return: (object) Объект класса Response
+    """
     data = request.json
     userid = request.args.get('user_id', default='NULL', type=int)
     device = data['device']
@@ -235,6 +326,11 @@ def add_session():
 @app.route(f"{route_prefix}/update_user", methods=['PUT'])
 @auth.login_required
 def update_user():
+    """ PUT API запрос на обновление данных пользователя по его id
+    \nПример: /api/v1/update_user?user_id=1
+
+    :return: (object) Объект класса Response
+    """
     data = request.json
     userid = request.args.get('user_id', default='NULL', type=int)
     email = data['email']
@@ -253,6 +349,11 @@ def update_user():
 @app.route(f"{route_prefix}/update_task", methods=['PUT'])
 @auth.login_required
 def update_task():
+    """ PUT API запрос на обновление задачи по id задачи, и по id пользователя
+    \nПример: /api/v1/update_task?user_id=1&task_id=5
+
+    :return: (object) Объект класса Response
+    """
     data = request.json
     userid = request.args.get('user_id', default='NULL', type=int)
     taskid = request.args.get('task_id', default='NULL', type=int)
@@ -276,6 +377,11 @@ def update_task():
 @app.route(f"{route_prefix}/update_category", methods=['PUT'])
 @auth.login_required
 def update_category():
+    """ PUT API запрос на обновление категории по id категории, и по id пользователя
+    \nПример: /api/v1/update_category?user_id=2&category_id=4
+
+    :return: (object) Объект класса Response
+    """
     data = request.json
     userid = request.args.get('user_id', default='NULL', type=int)
     categoryid = request.args.get('category_id', default='NULL', type=int)
@@ -295,6 +401,11 @@ def update_category():
 @app.route(f"{route_prefix}/update_settings", methods=['PUT'])
 @auth.login_required
 def update_settings():
+    """ PUT API запрос на обновление параметров пользователя по его id
+    \nПример: /api/v1/update_settings?user_id=1
+
+    :return: (object) Объект класса Response
+    """
     data = request.json
     userid = request.args.get('user_id', default='NULL', type=int)
     first_day_week = data['first_day_week']
@@ -311,6 +422,11 @@ def update_settings():
 @app.route(f"{route_prefix}/delete_task", methods=['DELETE'])
 @auth.login_required
 def delete_task():
+    """ DELETE API запрос на удаление задачи по id задачи, и по id пользователя
+    \nПример: /api/v1/delete_task?user_id=1&task_id=3
+
+    :return: (object) Объект класса Response
+    """
     userid = request.args.get('user_id', default='NULL', type=int)
     taskid = request.args.get('task_id', default='NULL', type=int)
     query = f"delete from Tasks where user_id = {userid} and task_id ={taskid}"
@@ -321,6 +437,11 @@ def delete_task():
 @app.route(f"{route_prefix}/delete_category", methods=['DELETE'])
 @auth.login_required
 def delete_category():
+    """ DELETE API запрос на удаление категории по id категории, и по id пользователя
+    \nПример: /api/v1/delete_category?user_id=2&category_id=1
+
+    :return: (object) Объект класса Response
+    """
     userid = request.args.get('user_id', default='NULL', type=int)
     categoryid = request.args.get('category_id', default='NULL', type=int)
     query = f"delete from Categories where user_id = {userid} and category_id = {categoryid}"
@@ -331,6 +452,11 @@ def delete_category():
 @app.route(f"{route_prefix}/health", methods=['GET'])
 @auth.login_required
 def health():
+    """ GET API запрос на получение статуса базы данных
+    \nПример: /api/v1/health
+
+    :return: (object) Объект класса Response
+    """
     try:
         db_status = "Connected to DB" if db.db_connection_status else "Not connected to DB"
         response = get_response_msg("Online " + db_status, HTTPStatus.OK)
@@ -345,6 +471,10 @@ def health():
 @app.route('/', methods=['GET'])
 @auth.login_required
 def home():
+    """ GET API запрос перенаправляющий на /api/v1/health
+
+    :return: (object) Объект класса Response
+    """
     return redirect(url_for('health'))
 
 ## =================================================[ Routes - End ]
@@ -353,6 +483,10 @@ def home():
 ## Unauthorized
 @auth.error_handler
 def unauthorized():
+    """ Обработка ошибки: Не пройдена верификация
+
+    :return: (object) Объект класса Response
+    """
     return get_response_msg(data='Unauthorized access', status_code=HTTPStatus.UNAUTHORIZED)
 
 
@@ -360,6 +494,10 @@ def unauthorized():
 @app.errorhandler(HTTPStatus.NOT_FOUND)
 @auth.login_required
 def page_not_found(e):
+    """ Обработка ошибки: Страницы не существует
+
+    :return: (object) Объект класса Response
+    """
     return get_response_msg(data=str(e), status_code=HTTPStatus.NOT_FOUND)
 
 
@@ -367,6 +505,10 @@ def page_not_found(e):
 @app.errorhandler(HTTPStatus.BAD_REQUEST)
 @auth.login_required
 def bad_request(e):
+    """ Обработка ошибки: Плохой запрос
+
+    :return: (object) Объект класса Response
+    """
     return get_response_msg(str(e), HTTPStatus.BAD_REQUEST)
 
 
@@ -374,6 +516,10 @@ def bad_request(e):
 @app.errorhandler(HTTPStatus.INTERNAL_SERVER_ERROR)
 @auth.login_required
 def internal_server_error(e):
+    """ Обработка ошибки: Внутренняя ошибка сервера
+
+    :return: (object) Объект класса Response
+    """
     return get_response_msg(str(e), HTTPStatus.INTERNAL_SERVER_ERROR)
 ## ==================================[ Error Handler Defined - End ]
 

@@ -2,7 +2,7 @@ import pymysql
 
 
 class Database:
-    """Database connection class."""
+    """ Класс для подключения к базе данных"""
 
     def __init__(self, config):
         self.__host = config.DB_HOST
@@ -18,7 +18,7 @@ class Database:
         self.close_connection()
 
     def __open_connection(self):
-        """Connect to MySQL Database."""
+        """ Подключение к MySQL Database"""
         try:
             if self.__conn is None:
                 self.__conn = pymysql.connect(
@@ -36,11 +36,11 @@ class Database:
 
     @property
     def db_connection_status(self):
-        """Returns the connection status"""
+        """ Возвращает статус подключения"""
         return True if self.__conn is not None else False
 
     def close_connection(self):
-        """Close the DB connection."""
+        """ Закрытие подключения к базе данных"""
         try:
             if self.__conn is not None:
                 self.__conn.close()
@@ -49,7 +49,7 @@ class Database:
             raise Exception(f'Failed to close the database connection due to: {e}')
 
     def run_query(self, query):
-        """Execute SQL query."""
+        """ Выполнение SQL запроса"""
         try:
             if not query or not isinstance(query, str):
                 raise Exception()

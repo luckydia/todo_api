@@ -7,7 +7,7 @@ CONF_DICT = {}
 
 
 def load_configuration_from_json(_json_filepath = SETTINGS_FILE_NAME):
-    """Load the configuration from the settings.json file"""
+    """ Загрузка конфигурации из файла конфигурации settings.json """
     global CONF_DICT
     try:
         with open(_json_filepath) as conf_file:
@@ -18,7 +18,7 @@ def load_configuration_from_json(_json_filepath = SETTINGS_FILE_NAME):
 
 
 class Config(object):
-    """Common generic configurations"""
+    """ Базовая конфигурация """
     ## Define the application directory
     BASE_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -48,7 +48,7 @@ class Config(object):
 
 class ProductionConfig(Config):
     '''
-    Configuration specific to production environment
+    Конфигурация разработки
     '''
     ENV = CONF_DICT['env']['production']['ENV']
     DEBUG = CONF_DICT['env']['production']['DEBUG']
@@ -58,7 +58,7 @@ class ProductionConfig(Config):
 
 class DevelopmentConfig(Config):
     '''
-    Configuration specific to development environment
+    Конфигурация разработки
     '''
     ENV = CONF_DICT['env']['development']['ENV']
     DEBUG = CONF_DICT['env']['development']['DEBUG']
