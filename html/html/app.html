@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>app module &mdash; API DayUP  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="config module" href="config.html" />
+    <link rel="prev" title="api" href="modules.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            API DayUP
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">api</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">app module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#app.add_category"><code class="docutils literal notranslate"><span class="pre">add_category()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.add_session"><code class="docutils literal notranslate"><span class="pre">add_session()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.add_task"><code class="docutils literal notranslate"><span class="pre">add_task()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.bad_request"><code class="docutils literal notranslate"><span class="pre">bad_request()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.create_app"><code class="docutils literal notranslate"><span class="pre">create_app()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.delete_category"><code class="docutils literal notranslate"><span class="pre">delete_category()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.delete_task"><code class="docutils literal notranslate"><span class="pre">delete_task()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.get_response_msg"><code class="docutils literal notranslate"><span class="pre">get_response_msg()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.get_tags"><code class="docutils literal notranslate"><span class="pre">get_tags()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.get_user"><code class="docutils literal notranslate"><span class="pre">get_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.get_user_bio"><code class="docutils literal notranslate"><span class="pre">get_user_bio()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.get_user_categories"><code class="docutils literal notranslate"><span class="pre">get_user_categories()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.get_user_last_session"><code class="docutils literal notranslate"><span class="pre">get_user_last_session()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.get_user_sessions"><code class="docutils literal notranslate"><span class="pre">get_user_sessions()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.get_user_settings"><code class="docutils literal notranslate"><span class="pre">get_user_settings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.get_user_tasks"><code class="docutils literal notranslate"><span class="pre">get_user_tasks()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.health"><code class="docutils literal notranslate"><span class="pre">health()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.home"><code class="docutils literal notranslate"><span class="pre">home()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.insert_user"><code class="docutils literal notranslate"><span class="pre">insert_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.internal_server_error"><code class="docutils literal notranslate"><span class="pre">internal_server_error()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.page_not_found"><code class="docutils literal notranslate"><span class="pre">page_not_found()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.set_settings"><code class="docutils literal notranslate"><span class="pre">set_settings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.sql_query"><code class="docutils literal notranslate"><span class="pre">sql_query()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.unauthorized"><code class="docutils literal notranslate"><span class="pre">unauthorized()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.update"><code class="docutils literal notranslate"><span class="pre">update()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.update_category"><code class="docutils literal notranslate"><span class="pre">update_category()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.update_settings"><code class="docutils literal notranslate"><span class="pre">update_settings()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.update_task"><code class="docutils literal notranslate"><span class="pre">update_task()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.update_user"><code class="docutils literal notranslate"><span class="pre">update_user()</span></code></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#app.verify_password"><code class="docutils literal notranslate"><span class="pre">verify_password()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config.html">config module</a></li>
+<li class="toctree-l2"><a class="reference internal" href="db.html">db module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">API DayUP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">api</a></li>
+      <li class="breadcrumb-item active">app module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/app.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-app">
+<span id="app-module"></span><h1>app module<a class="headerlink" href="#module-app" title="Permalink to this heading"></a></h1>
+<dl class="py function">
+<dt class="sig sig-object py" id="app.add_category">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">add_category</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.add_category" title="Permalink to this definition"></a></dt>
+<dd><p>POST API запрос на добавление новой категории пользователю по его id</p>
+<p>Пример: /api/v1/add_category?user_id=1</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.add_session">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">add_session</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.add_session" title="Permalink to this definition"></a></dt>
+<dd><p>POST API запрос на сохранение новой сессии пользователя по его id</p>
+<p>Пример: /api/v1/add_session?user_id=1</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.add_task">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">add_task</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.add_task" title="Permalink to this definition"></a></dt>
+<dd><p>POST API запрос на добавление новой задачи пользователю по его id</p>
+<p>Пример: /api/v1/add_task?user_id=1</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.bad_request">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">bad_request</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.bad_request" title="Permalink to this definition"></a></dt>
+<dd><p>Обработка ошибки: Плохой запрос</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.create_app">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">create_app</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.create_app" title="Permalink to this definition"></a></dt>
+<dd><p>Создание экземпляра приложения Flask</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Flask</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.delete_category">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">delete_category</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.delete_category" title="Permalink to this definition"></a></dt>
+<dd><p>DELETE API запрос на удаление категории по id категории, и по id пользователя</p>
+<p>Пример: /api/v1/delete_category?user_id=2&amp;category_id=1</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.delete_task">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">delete_task</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.delete_task" title="Permalink to this definition"></a></dt>
+<dd><p>DELETE API запрос на удаление задачи по id задачи, и по id пользователя</p>
+<p>Пример: /api/v1/delete_task?user_id=1&amp;task_id=3</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.get_response_msg">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">get_response_msg</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">status_code</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.get_response_msg" title="Permalink to this definition"></a></dt>
+<dd><p>Создание JSON ответов сервера</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>data</strong> – (list of tuples) Данные полученные SQL запросом</p></li>
+<li><p><strong>status_code</strong> – (int) HTTP Статус</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.get_tags">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">get_tags</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.get_tags" title="Permalink to this definition"></a></dt>
+<dd><p>GET API запрос на получение имеющихся тегов</p>
+<p>Пример: /api/v1/get_tags</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.get_user">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">get_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.get_user" title="Permalink to this definition"></a></dt>
+<dd><p>GET API запрос на получение данных пользователя по email</p>
+<p>Пример: <a class="reference external" href="mailto:/api/v1/get_user?email=example&#37;&#52;&#48;mail&#46;com">/api/v1/get_user?email=example<span>&#64;</span>mail<span>&#46;</span>com</a></p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.get_user_bio">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">get_user_bio</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.get_user_bio" title="Permalink to this definition"></a></dt>
+<dd><p>GET API запрос на получение данных пользователя по id</p>
+<p>Пример: /api/v1/get_user_bio?user_id=1</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.get_user_categories">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">get_user_categories</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.get_user_categories" title="Permalink to this definition"></a></dt>
+<dd><p>GET API запрос на получение информации о существующих категориях пользователя по его id</p>
+<p>Пример: /api/v1/get_categories?user_id=1</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.get_user_last_session">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">get_user_last_session</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.get_user_last_session" title="Permalink to this definition"></a></dt>
+<dd><p>GET API запрос на получение информации о последней сессии пользователя по его id</p>
+<p>Пример: /api/v1/get_last_session?user_id=1</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.get_user_sessions">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">get_user_sessions</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.get_user_sessions" title="Permalink to this definition"></a></dt>
+<dd><p>GET API запрос на получение информации о сессиях пользователя по его id</p>
+<p>Пример: /api/v1/get_sessions?user_id=1</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.get_user_settings">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">get_user_settings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.get_user_settings" title="Permalink to this definition"></a></dt>
+<dd><p>GET API запрос на получение выбранных параметров пользователем по его id</p>
+<p>Пример: /api/v1/get_settings?user_id=2</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.get_user_tasks">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">get_user_tasks</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.get_user_tasks" title="Permalink to this definition"></a></dt>
+<dd><p>GET API запрос на получение информации о имеющихся задачах пользователя по его id</p>
+<p>Пример: /api/v1/get_tasks?user_id=1</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.health">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">health</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.health" title="Permalink to this definition"></a></dt>
+<dd><p>GET API запрос на получение статуса базы данных</p>
+<p>Пример: /api/v1/health</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.home">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">home</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.home" title="Permalink to this definition"></a></dt>
+<dd><p>GET API запрос перенаправляющий на /api/v1/health</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.insert_user">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">insert_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.insert_user" title="Permalink to this definition"></a></dt>
+<dd><p>POST API запрос на добавление пользователя</p>
+<p>Пример: /api/v1/add_user</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.internal_server_error">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">internal_server_error</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.internal_server_error" title="Permalink to this definition"></a></dt>
+<dd><p>Обработка ошибки: Внутренняя ошибка сервера</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.page_not_found">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">page_not_found</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">e</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.page_not_found" title="Permalink to this definition"></a></dt>
+<dd><p>Обработка ошибки: Страницы не существует</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.set_settings">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">set_settings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.set_settings" title="Permalink to this definition"></a></dt>
+<dd><p>POST API запрос на сохранение настроек пользователя по его id</p>
+<p>Пример: /api/v1/set_settings?user_id=1</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.sql_query">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">sql_query</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.sql_query" title="Permalink to this definition"></a></dt>
+<dd><p>Выполнение SQL запроса на выборку записей</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>query</strong> – (str) SQL запрос</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.unauthorized">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">unauthorized</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.unauthorized" title="Permalink to this definition"></a></dt>
+<dd><p>Обработка ошибки: Не пройдена верификация</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.update">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">update</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.update" title="Permalink to this definition"></a></dt>
+<dd><p>Выполнение SQL запроса на изменение записей</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><p><strong>query</strong> – (str) SQL запрос</p>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.update_category">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">update_category</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.update_category" title="Permalink to this definition"></a></dt>
+<dd><p>PUT API запрос на обновление категории по id категории, и по id пользователя</p>
+<p>Пример: /api/v1/update_category?user_id=2&amp;category_id=4</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.update_settings">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">update_settings</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.update_settings" title="Permalink to this definition"></a></dt>
+<dd><p>PUT API запрос на обновление параметров пользователя по его id</p>
+<p>Пример: /api/v1/update_settings?user_id=1</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.update_task">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">update_task</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.update_task" title="Permalink to this definition"></a></dt>
+<dd><p>PUT API запрос на обновление задачи по id задачи, и по id пользователя</p>
+<p>Пример: /api/v1/update_task?user_id=1&amp;task_id=5</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.update_user">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">update_user</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#app.update_user" title="Permalink to this definition"></a></dt>
+<dd><p>PUT API запрос на обновление данных пользователя по его id</p>
+<p>Пример: /api/v1/update_user?user_id=1</p>
+<blockquote>
+<div><dl class="field-list simple">
+<dt class="field-odd">return<span class="colon">:</span></dt>
+<dd class="field-odd"><p>(object) Объект класса Response</p>
+</dd>
+</dl>
+</div></blockquote>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="app.verify_password">
+<span class="sig-prename descclassname"><span class="pre">app.</span></span><span class="sig-name descname"><span class="pre">verify_password</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">username</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">password</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#app.verify_password" title="Permalink to this definition"></a></dt>
+<dd><p>Верификация пользователя API сервера</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>username</strong> – (str) Логин пользователя</p></li>
+<li><p><strong>password</strong> – (str) Пароль пользователя</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns<span class="colon">:</span></dt>
+<dd class="field-even"><p>(str) Логин пользователя</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="modules.html" class="btn btn-neutral float-left" title="api" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="config.html" class="btn btn-neutral float-right" title="config module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Daria.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

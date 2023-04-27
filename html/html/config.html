@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>config module &mdash; API DayUP  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="db module" href="db.html" />
+    <link rel="prev" title="app module" href="app.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            API DayUP
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">api</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="app.html">app module</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">config module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#config.Config"><code class="docutils literal notranslate"><span class="pre">Config</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.Config.BASE_DIR"><code class="docutils literal notranslate"><span class="pre">Config.BASE_DIR</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Config.CSRF_ENABLED"><code class="docutils literal notranslate"><span class="pre">Config.CSRF_ENABLED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Config.CSRF_SESSION_KEY"><code class="docutils literal notranslate"><span class="pre">Config.CSRF_SESSION_KEY</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Config.DEBUG"><code class="docutils literal notranslate"><span class="pre">Config.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Config.HOST"><code class="docutils literal notranslate"><span class="pre">Config.HOST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Config.PORT"><code class="docutils literal notranslate"><span class="pre">Config.PORT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Config.THREADS_PER_PAGE"><code class="docutils literal notranslate"><span class="pre">Config.THREADS_PER_PAGE</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Config.URL_PREFIX"><code class="docutils literal notranslate"><span class="pre">Config.URL_PREFIX</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.Config.VERSION"><code class="docutils literal notranslate"><span class="pre">Config.VERSION</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#config.DevelopmentConfig"><code class="docutils literal notranslate"><span class="pre">DevelopmentConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.DevelopmentConfig.CONNECT_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">DevelopmentConfig.CONNECT_TIMEOUT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.DevelopmentConfig.DB_HOST"><code class="docutils literal notranslate"><span class="pre">DevelopmentConfig.DB_HOST</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.DevelopmentConfig.DB_NAME"><code class="docutils literal notranslate"><span class="pre">DevelopmentConfig.DB_NAME</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.DevelopmentConfig.DB_PASSWD"><code class="docutils literal notranslate"><span class="pre">DevelopmentConfig.DB_PASSWD</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.DevelopmentConfig.DB_PORT"><code class="docutils literal notranslate"><span class="pre">DevelopmentConfig.DB_PORT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.DevelopmentConfig.DB_USER"><code class="docutils literal notranslate"><span class="pre">DevelopmentConfig.DB_USER</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.DevelopmentConfig.DEBUG"><code class="docutils literal notranslate"><span class="pre">DevelopmentConfig.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.DevelopmentConfig.DEVELOPMENT"><code class="docutils literal notranslate"><span class="pre">DevelopmentConfig.DEVELOPMENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.DevelopmentConfig.ENV"><code class="docutils literal notranslate"><span class="pre">DevelopmentConfig.ENV</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#config.ProductionConfig"><code class="docutils literal notranslate"><span class="pre">ProductionConfig</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#config.ProductionConfig.CONNECT_TIMEOUT"><code class="docutils literal notranslate"><span class="pre">ProductionConfig.CONNECT_TIMEOUT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.ProductionConfig.DEBUG"><code class="docutils literal notranslate"><span class="pre">ProductionConfig.DEBUG</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.ProductionConfig.DEVELOPMENT"><code class="docutils literal notranslate"><span class="pre">ProductionConfig.DEVELOPMENT</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config.ProductionConfig.ENV"><code class="docutils literal notranslate"><span class="pre">ProductionConfig.ENV</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#config.load_configuration_from_json"><code class="docutils literal notranslate"><span class="pre">load_configuration_from_json()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="db.html">db module</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">API DayUP</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">api</a></li>
+      <li class="breadcrumb-item active">config module</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/config.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="module-config">
+<span id="config-module"></span><h1>config module<a class="headerlink" href="#module-config" title="Permalink to this heading"></a></h1>
+<dl class="py class">
+<dt class="sig sig-object py" id="config.Config">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">Config</span></span><a class="headerlink" href="#config.Config" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Базовая конфигурация</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Config.BASE_DIR">
+<span class="sig-name descname"><span class="pre">BASE_DIR</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'C:\\Users\\jessi\\Documents\\Work\\6</span> <span class="pre">семестр\\project\\api'</span></em><a class="headerlink" href="#config.Config.BASE_DIR" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Config.CSRF_ENABLED">
+<span class="sig-name descname"><span class="pre">CSRF_ENABLED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.Config.CSRF_ENABLED" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Config.CSRF_SESSION_KEY">
+<span class="sig-name descname"><span class="pre">CSRF_SESSION_KEY</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">''</span></em><a class="headerlink" href="#config.Config.CSRF_SESSION_KEY" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Config.DEBUG">
+<span class="sig-name descname"><span class="pre">DEBUG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.Config.DEBUG" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Config.HOST">
+<span class="sig-name descname"><span class="pre">HOST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'127.0.0.1'</span></em><a class="headerlink" href="#config.Config.HOST" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Config.PORT">
+<span class="sig-name descname"><span class="pre">PORT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">8008</span></em><a class="headerlink" href="#config.Config.PORT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Config.THREADS_PER_PAGE">
+<span class="sig-name descname"><span class="pre">THREADS_PER_PAGE</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#config.Config.THREADS_PER_PAGE" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Config.URL_PREFIX">
+<span class="sig-name descname"><span class="pre">URL_PREFIX</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'api'</span></em><a class="headerlink" href="#config.Config.URL_PREFIX" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.Config.VERSION">
+<span class="sig-name descname"><span class="pre">VERSION</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'v1'</span></em><a class="headerlink" href="#config.Config.VERSION" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="config.DevelopmentConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">DevelopmentConfig</span></span><a class="headerlink" href="#config.DevelopmentConfig" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#config.Config" title="config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
+<p>Конфигурация разработки</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.DevelopmentConfig.CONNECT_TIMEOUT">
+<span class="sig-name descname"><span class="pre">CONNECT_TIMEOUT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#config.DevelopmentConfig.CONNECT_TIMEOUT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.DevelopmentConfig.DB_HOST">
+<span class="sig-name descname"><span class="pre">DB_HOST</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'127.0.0.1'</span></em><a class="headerlink" href="#config.DevelopmentConfig.DB_HOST" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.DevelopmentConfig.DB_NAME">
+<span class="sig-name descname"><span class="pre">DB_NAME</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'db_todo'</span></em><a class="headerlink" href="#config.DevelopmentConfig.DB_NAME" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.DevelopmentConfig.DB_PASSWD">
+<span class="sig-name descname"><span class="pre">DB_PASSWD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'admin'</span></em><a class="headerlink" href="#config.DevelopmentConfig.DB_PASSWD" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.DevelopmentConfig.DB_PORT">
+<span class="sig-name descname"><span class="pre">DB_PORT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3306</span></em><a class="headerlink" href="#config.DevelopmentConfig.DB_PORT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.DevelopmentConfig.DB_USER">
+<span class="sig-name descname"><span class="pre">DB_USER</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'root'</span></em><a class="headerlink" href="#config.DevelopmentConfig.DB_USER" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.DevelopmentConfig.DEBUG">
+<span class="sig-name descname"><span class="pre">DEBUG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.DevelopmentConfig.DEBUG" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.DevelopmentConfig.DEVELOPMENT">
+<span class="sig-name descname"><span class="pre">DEVELOPMENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">True</span></em><a class="headerlink" href="#config.DevelopmentConfig.DEVELOPMENT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.DevelopmentConfig.ENV">
+<span class="sig-name descname"><span class="pre">ENV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'development'</span></em><a class="headerlink" href="#config.DevelopmentConfig.ENV" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="config.ProductionConfig">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">ProductionConfig</span></span><a class="headerlink" href="#config.ProductionConfig" title="Permalink to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#config.Config" title="config.Config"><code class="xref py py-class docutils literal notranslate"><span class="pre">Config</span></code></a></p>
+<p>Конфигурация разработки</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProductionConfig.CONNECT_TIMEOUT">
+<span class="sig-name descname"><span class="pre">CONNECT_TIMEOUT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#config.ProductionConfig.CONNECT_TIMEOUT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProductionConfig.DEBUG">
+<span class="sig-name descname"><span class="pre">DEBUG</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#config.ProductionConfig.DEBUG" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProductionConfig.DEVELOPMENT">
+<span class="sig-name descname"><span class="pre">DEVELOPMENT</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">False</span></em><a class="headerlink" href="#config.ProductionConfig.DEVELOPMENT" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="config.ProductionConfig.ENV">
+<span class="sig-name descname"><span class="pre">ENV</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">'production'</span></em><a class="headerlink" href="#config.ProductionConfig.ENV" title="Permalink to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="config.load_configuration_from_json">
+<span class="sig-prename descclassname"><span class="pre">config.</span></span><span class="sig-name descname"><span class="pre">load_configuration_from_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">_json_filepath</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'settings.json'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#config.load_configuration_from_json" title="Permalink to this definition"></a></dt>
+<dd><p>Загрузка конфигурации из файла конфигурации settings.json</p>
+</dd></dl>
+
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="app.html" class="btn btn-neutral float-left" title="app module" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="db.html" class="btn btn-neutral float-right" title="db module" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, Daria.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
